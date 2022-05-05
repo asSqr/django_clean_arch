@@ -1,3 +1,3 @@
 db.sqlite3
-django_clean_arch/__pycache__
-gadget_app/__pycache__
+__pycache__/
+ *.pyc
