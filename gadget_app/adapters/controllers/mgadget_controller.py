@@ -6,10 +6,7 @@ from ..repositories import MGadgetRepository
 from gadget_app.use_cases import CreateMGadgetUseCase
 from .handlers import handle_success
 
-from django.views.decorators.csrf import ensure_csrf_cookie
 
-
-@ensure_csrf_cookie
 def create_mgadget(request):
     if request.method == 'POST':
         data = json.loads(request.body)
