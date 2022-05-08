@@ -9,7 +9,7 @@ class CreateMGadgetRequest(BaseRequest):
     desc: str
     ruby: str
     
-    def __post__init__(self):
+    def __post_init__(self):
         if not self.name:
             raise ValidationError('gadget name is required.')
         
