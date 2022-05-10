@@ -1,11 +1,11 @@
 from django.urls import path
 from .adapters.controllers.mgadget_controller import (
-    retrieve_mgadget,
-    create_mgadget,
+    mgadget_id_handler,
+    mgadget_handler,
 )
 
 
 urlpatterns = [
-    path('<str:id>', retrieve_mgadget),
-    path('', create_mgadget),
+    path('<str:id>', mgadget_id_handler),
+    path('', mgadget_handler),
 ]

@@ -3,7 +3,7 @@ from .base_request import BaseRequest
 
 
 @dataclass
-class RetrieveMGadgetRequest(BaseRequest):
+class DeleteMGadgetRequest(BaseRequest):
     id: str
     
     def __post_init__(self):

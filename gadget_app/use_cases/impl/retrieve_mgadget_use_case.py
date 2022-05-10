@@ -10,9 +10,11 @@ class RetrieveMGadgetUseCase(BaseUseCase):
         self._repo = repo
         
     def handle(self, request: RetrieveMGadgetRequest) -> RetrieveMGadgetResponse:
-        mgadget = self._repo.get(request.id)
+        mgadget = None
         
-        if mgadget is None:
+        try:
+            mgadget = self._repo.get(request.id)
+        except Exception:
             raise UnexpectedError("Failed to retrieve gadget.")
         
         return RetrieveMGadgetResponse(mgadget)

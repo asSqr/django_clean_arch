@@ -1,4 +1,3 @@
-from datetime import datetime
 import uuid
 
 from django.db import models
@@ -12,10 +11,3 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
-
-    def delete(self):
-        self.deleted_at = datetime.now()
-        self.save()
-
-    def hard_delete(self):
-        super().delete()

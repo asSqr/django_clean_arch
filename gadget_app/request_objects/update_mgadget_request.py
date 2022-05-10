@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 from .base_request import BaseRequest
+from typing import Dict, Any
 
 
 @dataclass
-class RetrieveMGadgetRequest(BaseRequest):
-    id: str
+class UpdateMGadgetRequest(BaseRequest):
+    data: Dict[str, Any]
     
     def __post_init__(self):
         pass
