@@ -1,3 +1,5 @@
+import logging
+
 from gadget_app.adapters.repositories import MGadgetRepository
 from gadget_app.exceptions import UnexpectedError
 from gadget_app.request_objects import RetrieveMGadgetRequest
@@ -14,7 +16,9 @@ class RetrieveMGadgetUseCase(BaseUseCase):
         
         try:
             mgadget = self._repo.get(request.id)
-        except Exception:
+        except Exception as e:
+            logging.exception(e)
+            
             raise UnexpectedError("Failed to retrieve gadget.")
         
         return RetrieveMGadgetResponse(mgadget)

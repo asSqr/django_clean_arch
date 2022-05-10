@@ -1,3 +1,5 @@
+import logging
+
 from gadget_app.adapters.repositories import MGadgetRepository
 from gadget_app.exceptions import UnexpectedError
 from gadget_app.request_objects import UpdateMGadgetRequest
@@ -12,7 +14,9 @@ class UpdateMGadgetUseCase(BaseUseCase):
     def handle(self, request: UpdateMGadgetRequest) -> UpdateMGadgetResponse:
         try:
             self._repo.update(request.data)
-        except self._repo.model_class.DoesNotExist:
+        except Exception as e:
+            logging.exception(e)
+            
             raise UnexpectedError("Failed to update gadget.")
         
         return UpdateMGadgetResponse()
