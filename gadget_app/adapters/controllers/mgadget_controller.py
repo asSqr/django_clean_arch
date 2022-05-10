@@ -1,6 +1,7 @@
 import json
 
 from django.http import HttpRequest, HttpResponse
+from gadget_app.exceptions.errors import ValidationError
 
 from gadget_app.request_objects import (
     RetrieveMGadgetRequest,
@@ -84,6 +85,11 @@ def create_mgadget(request: HttpRequest) -> HttpResponse:
 def update_mgadget(request: HttpRequest, id: str) -> HttpResponse:
     if request.method == 'PUT' or request.method == 'PATCH':
         data = json.loads(request.body)
+        
+        if 'id' in data and id != data['id']:
+            raise ValidationError("Invalid id.")
+        
+        data['id'] = id
         
         req = UpdateMGadgetRequest(data)
         
