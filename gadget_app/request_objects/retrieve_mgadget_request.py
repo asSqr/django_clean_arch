@@ -6,5 +6,5 @@ from .base_request import BaseRequest
 class RetrieveMGadgetRequest(BaseRequest):
     id: str
     
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         pass

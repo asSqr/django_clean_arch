@@ -9,7 +9,7 @@ from ..base_use_case import BaseUseCase
 
 
 class CreateMGadgetUseCase(BaseUseCase):
-    def __init__(self, repo: MGadgetRepository):
+    def __init__(self, repo: MGadgetRepository) -> None:
         self._repo = repo
         
     def handle(self, request: CreateMGadgetRequest) -> CreateMGadgetResponse:

@@ -7,5 +7,5 @@ from typing import Dict, Any
 class UpdateMGadgetRequest(BaseRequest):
     data: Dict[str, Any]
     
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         pass

@@ -6,7 +6,7 @@ from ..base_use_case import BaseUseCase
 
 
 class UpdateMGadgetUseCase(BaseUseCase):
-    def __init__(self, repo: MGadgetRepository):
+    def __init__(self, repo: MGadgetRepository) -> None:
         self._repo = repo
         
     def handle(self, request: UpdateMGadgetRequest) -> UpdateMGadgetResponse:

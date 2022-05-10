@@ -7,7 +7,7 @@ from ..response_objects import BaseResponse
 
 class BaseUseCase(ABC):
     @abstractmethod
-    def __init__(self, repo: BaseRepository):
+    def __init__(self, repo: BaseRepository) -> None:
         raise NotImplementedError()
     
     @abstractmethod
