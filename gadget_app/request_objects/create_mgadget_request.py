@@ -14,7 +14,7 @@ class CreateMGadgetRequest(BaseRequest):
             raise ValidationError('gadget name is required.')
         
         if not self.desc:
-            raise ValidationError('gadget name is required.')
+            raise ValidationError('gadget desc is required.')
         
         if not self.ruby:
-            raise ValidationError('gadget name is required.')
+            raise ValidationError('gadget ruby is required.')
