@@ -22,9 +22,10 @@ from gadget_app.models import MGadgetModel
 from gadget_app.utils import optional_or
 from ..repositories import MGadgetRepository
 from .handlers import handle_success
+from typing import Optional
 
 
-def mgadget_id_handler(request: HttpRequest, id: str) -> HttpResponse:
+def mgadget_id_handler(request: HttpRequest, id: str) -> Optional[HttpResponse]:
     resp = None
     
     resp = optional_or(resp, retrieve_mgadget(request, id))
@@ -34,7 +35,7 @@ def mgadget_id_handler(request: HttpRequest, id: str) -> HttpResponse:
     return resp
     
     
-def mgadget_handler(request: HttpRequest) -> HttpResponse:
+def mgadget_handler(request: HttpRequest) -> Optional[HttpResponse]:
     resp = None
     
     resp = optional_or(resp, list_mgadget(request))
@@ -43,7 +44,7 @@ def mgadget_handler(request: HttpRequest) -> HttpResponse:
     return resp
 
 
-def retrieve_mgadget(request: HttpRequest, id: str) -> HttpResponse:
+def retrieve_mgadget(request: HttpRequest, id: str) -> Optional[HttpResponse]:
     if request.method == 'GET':
         req = RetrieveMGadgetRequest(id)
         
@@ -55,7 +56,7 @@ def retrieve_mgadget(request: HttpRequest, id: str) -> HttpResponse:
         return handle_success(resp)
     
     
-def list_mgadget(request: HttpRequest) -> HttpResponse:
+def list_mgadget(request: HttpRequest) -> Optional[HttpResponse]:
     if request.method == 'GET':
         req = ListMGadgetRequest()
         
@@ -67,7 +68,7 @@ def list_mgadget(request: HttpRequest) -> HttpResponse:
         return handle_success(resp)
 
 
-def create_mgadget(request: HttpRequest) -> HttpResponse:
+def create_mgadget(request: HttpRequest) -> Optional[HttpResponse]:
     if request.method == 'POST':
         data = json.loads(request.body)
         
@@ -81,7 +82,7 @@ def create_mgadget(request: HttpRequest) -> HttpResponse:
         return handle_success(resp)
     
     
-def update_mgadget(request: HttpRequest, id: str) -> HttpResponse:
+def update_mgadget(request: HttpRequest, id: str) -> Optional[HttpResponse]:
     if request.method == 'PUT' or request.method == 'PATCH':
         data = json.loads(request.body)
         
@@ -95,7 +96,7 @@ def update_mgadget(request: HttpRequest, id: str) -> HttpResponse:
         return handle_success(resp)
 
 
-def delete_mgadget(request: HttpRequest, id: str) -> HttpResponse:
+def delete_mgadget(request: HttpRequest, id: str) -> Optional[HttpResponse]:
     if request.method == 'DELETE':
         req = DeleteMGadgetRequest(id)
         
